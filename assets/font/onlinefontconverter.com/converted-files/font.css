@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Vermin-Vibes';
+  src: url('Vermin-Vibes.eot');
+  src: url('Vermin-Vibes.eot?#iefix') format('embedded-opentype'),
+       url('Vermin-Vibes.svg#Vermin-Vibes') format('svg'),
+       url('Vermin-Vibes.ttf') format('truetype'),
+       url('Vermin-Vibes.woff') format('woff'),
+       url('Vermin-Vibes.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
