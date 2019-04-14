@@ -163,7 +163,8 @@ var AppModule = /** @class */ (function () {
                 _header_main_header_main_component__WEBPACK_IMPORTED_MODULE_6__["HeaderMainComponent"],
                 _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["HomepageComponent"],
                 _downloadpage_downloadpage_component__WEBPACK_IMPORTED_MODULE_11__["DownloadpageComponent"],
-                _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["DialogOverviewExampleDialog"]
+                _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["DialogOverviewExampleDialog"],
+                _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["InfoPanelDialog"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -182,7 +183,7 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatProgressSpinnerModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"]
             ],
-            entryComponents: [_homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["HomepageComponent"], _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["DialogOverviewExampleDialog"]],
+            entryComponents: [_homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["HomepageComponent"], _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["DialogOverviewExampleDialog"], _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["InfoPanelDialog"]],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
@@ -212,7 +213,7 @@ module.exports = ".example-card {\r\n    margin-top: 7px;\r\n    width: -webkit-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row\" style=\"float: none; margin: 0 auto;\">\n   \n\n    <section *ngFor=\"let device of devices\">\n      <div class=\"col-md-4 ngforwala\">\n        <mat-card class=\"example-card d-block\" [ngStyle]=\"{\n          'width': acchaBro()\n        }\">\n          <mat-list-item>\n            <mat-card-header>\n              <div mat-card-avatar class=\"text-center\">\n                <i class=\"fas fa-mobile-alt fa-3x\"></i>\n              </div>\n              <mat-card-title>{{device.device_name}}</mat-card-title>\n              <mat-card-subtitle>{{device.codename}}</mat-card-subtitle>\n            </mat-card-header>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-list-item>\n            <mat-card-content>\n              <i class=\"fas fa-tools ml-2 mt-3\" style=\"font-size:18px\"></i>\n              <span style=\"margin-left: 35px;\">{{device.maintainer_name}}</span>\n            </mat-card-content>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-card-actions>\n            <button mat-button color=\"primary\"><a href=\"device.codename\" style=\"text-decoration: none\">Download</a></button>\n            <button mat-button><a href=\"device.xda_thread\" style=\"text-decoration: none; color:black\">XDA Thread</a></button>\n          </mat-card-actions>\n        </mat-card>\n      </div>\n    </section>\n\n\n\n  </div>\n</div>"
+module.exports = "<div class=\"container\">\n  <div class=\"row\" style=\"float: none; margin: 0 auto;\">\n   \n\n    <section *ngFor=\"let device of devices\">\n      <div class=\"col-md-4 ngforwala\">\n        <mat-card class=\"example-card d-block\" [ngStyle]=\"{\n          'width': acchaBro()\n        }\">\n          <mat-list-item>\n            <mat-card-header>\n              <div mat-card-avatar class=\"text-center\">\n                <i class=\"fas fa-mobile-alt fa-3x\"></i>\n              </div>\n              <mat-card-title>{{device.device_name}}</mat-card-title>\n              <mat-card-subtitle>{{device.codename}}</mat-card-subtitle>\n            </mat-card-header>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-list-item>\n            <mat-card-content>\n              <i class=\"fas fa-tools ml-2 mt-3\" style=\"font-size:18px\"></i>\n              <span style=\"margin-left: 35px;\">{{device.maintainer_name}}</span>\n            </mat-card-content>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-card-actions>\n            <button mat-button color=\"primary\"><a [href]=\"device.codename\" style=\"text-decoration: none\">Download</a></button>\n            <button mat-button><a [href]=\"device.xda_thread\" style=\"text-decoration: none; color:black\">XDA Thread</a></button>\n          </mat-card-actions>\n        </mat-card>\n      </div>\n    </section>\n\n\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -448,7 +449,7 @@ module.exports = "\r\n.mein {\r\n    margin-top: 100px;\r\n}\r\n.logo {\r\n    w
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <div class=\"row mein\">\n    <div class=\"col-md-12 text-center\">\n      <img src=\"/assets/logo.png\" class=\"logo\" alt=\"LOGO\">\n    </div>\n    <div class=\"col-md-12 text-center\">\n      <section class=\"text-muted superior\">\n        <h1>Experience the authority</h1>\n      </section>\n      <button class=\"w-75\" mat-raised-button (click)=\"openDialog()\">Detect Device</button>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"container-fluid\">\n  <div class=\"row mein\">\n    <div class=\"col-md-12 text-center\">\n      <img src=\"/assets/logo.png\" class=\"logo\" alt=\"LOGO\">\n    </div>\n    <div class=\"col-md-12 text-center\">\n      <section class=\"text-muted superior\">\n        <h1>Experience the authority</h1>\n      </section>\n      <button class=\"w-75\" mat-raised-button (click)=\"openDialog()\">Detect Device</button>\n    </div>\n    <div class=\"col-md-12 text-center text-muted\">\n      <button mat-button (click)=\"infoButton()\">\n        What is this? <mat-icon mat-list-icon class=\"mt-1\" style=\"font-size: larger\">help_outline</mat-icon>\n      </button>\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -456,13 +457,14 @@ module.exports = "<div class=\"container-fluid\">\n  <div class=\"row mein\">\n 
 /*!************************************************!*\
   !*** ./src/app/homepage/homepage.component.ts ***!
   \************************************************/
-/*! exports provided: HomepageComponent, DialogOverviewExampleDialog */
+/*! exports provided: HomepageComponent, DialogOverviewExampleDialog, InfoPanelDialog */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomepageComponent", function() { return HomepageComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DialogOverviewExampleDialog", function() { return DialogOverviewExampleDialog; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoPanelDialog", function() { return InfoPanelDialog; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
@@ -482,6 +484,15 @@ var HomepageComponent = /** @class */ (function () {
         console.log("opened");
         dialogRef.afterClosed().subscribe(function (result) {
             console.log('The dialog was closed');
+        });
+    };
+    HomepageComponent.prototype.infoButton = function () {
+        var dialogRef = this.dialog.open(InfoPanelDialog, {
+            width: '400px'
+        });
+        console.log("Info Panel opened");
+        dialogRef.afterClosed().subscribe(function (result) {
+            console.log("InfoPanel was closed");
         });
     };
     HomepageComponent.prototype.ngOnInit = function () {
@@ -602,6 +613,7 @@ var DialogOverviewExampleDialog = /** @class */ (function () {
                                     else {
                                         _this.loadinAnim = false;
                                         _this.processMessage = "Build not found! Try to find your device from downloads section.";
+                                        _this.findStatus = "Failed";
                                     }
                                 }
                             }
@@ -621,7 +633,32 @@ var DialogOverviewExampleDialog = /** @class */ (function () {
     return DialogOverviewExampleDialog;
 }());
 
+var InfoPanelDialog = /** @class */ (function () {
+    function InfoPanelDialog() {
+    }
+    InfoPanelDialog.prototype.ngOnInit = function () {
+    };
+    InfoPanelDialog = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'info-panel',
+            template: __webpack_require__(/*! ./infoPanel.html */ "./src/app/homepage/infoPanel.html"),
+        })
+    ], InfoPanelDialog);
+    return InfoPanelDialog;
+}());
 
+
+
+/***/ }),
+
+/***/ "./src/app/homepage/infoPanel.html":
+/*!*****************************************!*\
+  !*** ./src/app/homepage/infoPanel.html ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h1 mat-dialog-title>About this Feature</h1>\r\n<div mat-dialog-content>\r\n    <div class=\"container-fluid mb-2\">\r\n        <div class=\"row\">\r\n            Device Detection will automatically fetch devices from official devices list\r\n            and it will match with the current device which you are browsing on. If your device got found in officials\r\n            then it will directly provide you latest build available which was updated by your device maintainer.\r\n            <br>\r\n            <div class=\"container mat-app-background\">\r\n                <i>\r\n                    <strong>NOTE:</strong> Redmi 4X(santoni) and Redmi 4 Prime(markw) are conflicting so if detection fails to show you correct device\r\n                    then you have to manually navigate to Downloads section to get the build.\r\n                </i>\r\n            </div>\r\n            If you are having any trouble then contact me <a href=\"https://t.me/SoniSins\">on Telegram.</a>\r\n        </div>\r\n    </div>\r\n    \r\n</div>\r\n<div mat-dialog-actions class=\"mt-3\">\r\n    <button mat-button [mat-dialog-close]=\"null\">Close</button>\r\n</div>"
 
 /***/ }),
 
