@@ -213,7 +213,7 @@ module.exports = ".example-card {\r\n    margin-top: 7px;\r\n    width: -webkit-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row\" style=\"float: none; margin: 0 auto;\">\n   \n\n    <section *ngFor=\"let device of devices\">\n      <div class=\"col-md-4 ngforwala\">\n        <mat-card class=\"example-card d-block\" [ngStyle]=\"{\n          'width': acchaBro()\n        }\">\n          <mat-list-item>\n            <mat-card-header>\n              <div mat-card-avatar class=\"text-center\">\n                <i class=\"fas fa-mobile-alt fa-3x\"></i>\n              </div>\n              <mat-card-title>{{device.device_name}}</mat-card-title>\n              <mat-card-subtitle>{{device.codename}}</mat-card-subtitle>\n            </mat-card-header>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-list-item>\n            <mat-card-content>\n              <i class=\"fas fa-tools ml-2 mt-3\" style=\"font-size:18px\"></i>\n              <span style=\"margin-left: 35px;\">{{device.maintainer_name}}</span>\n            </mat-card-content>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-card-actions>\n            <button mat-button color=\"primary\"><a [href]=\"device.codename\" style=\"text-decoration: none\">Download</a></button>\n            <button mat-button><a [href]=\"device.xda_thread\" style=\"text-decoration: none; color:black\">XDA Thread</a></button>\n          </mat-card-actions>\n        </mat-card>\n      </div>\n    </section>\n\n\n\n  </div>\n</div>"
+module.exports = "<div class=\"container\">\n  <div class=\"row\" style=\"float: none\">\n   \n\n    <section *ngFor=\"let device of devices\">\n      <div class=\"col-md-4 ngforwala\">\n        <mat-card class=\"example-card d-block\" [ngStyle]=\"{\n          'width': acchaBro()\n        }\">\n          <mat-list-item>\n            <mat-card-header>\n              <div mat-card-avatar class=\"text-center\">\n                <i class=\"fas fa-mobile-alt fa-3x\"></i>\n              </div>\n              <mat-card-title>{{device.device_name}}</mat-card-title>\n              <mat-card-subtitle>{{device.codename}}</mat-card-subtitle>\n            </mat-card-header>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-list-item>\n            <mat-card-content>\n              <i class=\"fas fa-tools ml-2 mt-3\" style=\"font-size:18px\"></i>\n              <span style=\"margin-left: 35px;\">{{device.maintainer_name}}</span>\n            </mat-card-content>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-card-actions>\n            <button mat-button color=\"primary\"><a [href]=\"device.codename\" style=\"text-decoration: none\">Download</a></button>\n            <button mat-button><a [href]=\"device.xda_thread\" style=\"text-decoration: none; color:black\">XDA Thread</a></button>\n          </mat-card-actions>\n        </mat-card>\n      </div>\n    </section>\n\n\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -240,13 +240,27 @@ var DownloadpageComponent = /** @class */ (function () {
         this.math = Math;
         this.codenames = [];
     }
+    DownloadpageComponent.prototype.ngAfterContentInit = function () {
+        setTimeout(function () {
+            var el = document.getElementsByClassName('ngforwala');
+            var cnt = el.length - 1;
+            el[cnt].style.marginBottom = 18 + 'px';
+        }, 2000);
+    };
     DownloadpageComponent.prototype.onResize = function (event) {
         this.innerWidth = window.innerWidth;
         // console.log(this.innerWidth);
         var matCardWid;
-        if (this.innerWidth <= 426) {
+        if (this.innerWidth <= 550) {
             console.log("kek");
-            matCardWid = this.innerWidth - 60;
+            matCardWid = this.innerWidth - 30;
+            var elements = document.getElementsByClassName('example-card');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.setProperty('width', matCardWid, 'important');
+            }
+        }
+        else if (this.innerWidth > 426) {
+            matCardWid = this.innerWidth - 100;
             var elements = document.getElementsByClassName('example-card');
             for (var i = 0; i < elements.length; i++) {
                 elements[i].style.width = matCardWid + 'px';
@@ -259,7 +273,14 @@ var DownloadpageComponent = /** @class */ (function () {
         var matCardWid;
         if (this.innerWidth <= 550) {
             // console.log("kek");
-            matCardWid = this.innerWidth - 60;
+            matCardWid = this.innerWidth - 30;
+            var elements = document.getElementsByClassName('example-card');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.width = matCardWid + 'px';
+            }
+        }
+        else if (this.innerWidth > 426) {
+            matCardWid = this.innerWidth - 1190;
             var elements = document.getElementsByClassName('example-card');
             for (var i = 0; i < elements.length; i++) {
                 elements[i].style.width = matCardWid + 'px';
@@ -313,6 +334,7 @@ var DownloadpageComponent = /** @class */ (function () {
             //   // console.log(this.bytesToSize(detaa.response[0].size));
             // });
         });
+        this.acchaBro();
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('window:resize', ['$event']),
@@ -658,7 +680,7 @@ var InfoPanelDialog = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 mat-dialog-title>About this Feature</h1>\r\n<div mat-dialog-content>\r\n    <div class=\"container-fluid mb-2\">\r\n        <div class=\"row\">\r\n            Device Detection will automatically fetch devices from official devices list\r\n            and it will match with the current device which you are browsing on. If your device got found in officials\r\n            then it will directly provide you latest build available which was updated by your device maintainer.\r\n            <br>\r\n            <div class=\"container mat-app-background\">\r\n                <i>\r\n                    <strong>NOTE:</strong> Redmi 4X(santoni) and Redmi 4 Prime(markw) are conflicting so if detection fails to show you correct device\r\n                    then you have to manually navigate to Downloads section to get the build.\r\n                </i>\r\n            </div>\r\n            If you are having any trouble then contact me <a href=\"https://t.me/SoniSins\">on Telegram.</a>\r\n        </div>\r\n    </div>\r\n    \r\n</div>\r\n<div mat-dialog-actions class=\"mt-3\">\r\n    <button mat-button [mat-dialog-close]=\"null\">Close</button>\r\n</div>"
+module.exports = "<h1 mat-dialog-title>About this Feature</h1>\r\n<div mat-dialog-content>\r\n    <div class=\"container-fluid mb-2\">\r\n        <div class=\"row\">\r\n            Device Detection will automatically fetch devices from official devices list\r\n            and it will match with the current device which you are browsing on. If your device got found in officials\r\n            then it will directly provide you latest build available which was updated by your device maintainer.\r\n            <br>\r\n            <div class=\"container mat-app-background\">\r\n                <i>\r\n                    <strong>NOTE:</strong> Redmi 4X(santoni) and Redmi 4 Prime(markw) are conflicting so if detection fails to show you correct device\r\n                    then you have to manually navigate to Downloads section to get the build.\r\n                </i>\r\n            </div>\r\n            If you are having any trouble then contact us on <a href=\"https://t.me/SuperiorOS\">Telegram.</a>\r\n        </div>\r\n    </div>\r\n    \r\n</div>\r\n<div mat-dialog-actions class=\"mt-3\">\r\n    <button mat-button [mat-dialog-close]=\"null\">Close</button>\r\n</div>"
 
 /***/ }),
 
