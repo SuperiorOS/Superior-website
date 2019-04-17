@@ -259,8 +259,15 @@ var DownloadpageComponent = /** @class */ (function () {
                 elements[i].style.setProperty('width', matCardWid, 'important');
             }
         }
-        else if (this.innerWidth > 426) {
-            matCardWid = this.innerWidth - 100;
+        else if (this.innerWidth > 1300) {
+            matCardWid = this.innerWidth - 1200;
+            var elements = document.getElementsByClassName('example-card');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.width = matCardWid + 'px';
+            }
+        }
+        else if (this.innerWidth > 1000) {
+            matCardWid = this.innerWidth - 900;
             var elements = document.getElementsByClassName('example-card');
             for (var i = 0; i < elements.length; i++) {
                 elements[i].style.width = matCardWid + 'px';
@@ -279,8 +286,15 @@ var DownloadpageComponent = /** @class */ (function () {
                 elements[i].style.width = matCardWid + 'px';
             }
         }
-        else if (this.innerWidth > 426) {
-            matCardWid = this.innerWidth - 1190;
+        else if (this.innerWidth > 1300) {
+            matCardWid = this.innerWidth - 1200;
+            var elements = document.getElementsByClassName('example-card');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.width = matCardWid + 'px';
+            }
+        }
+        else if (this.innerWidth > 1000) {
+            matCardWid = this.innerWidth - 900;
             var elements = document.getElementsByClassName('example-card');
             for (var i = 0; i < elements.length; i++) {
                 elements[i].style.width = matCardWid + 'px';
