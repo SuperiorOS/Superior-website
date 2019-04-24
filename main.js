@@ -213,7 +213,7 @@ module.exports = ".example-card {\r\n    margin-top: 7px;\r\n    width: -webkit-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row\" style=\"float: none\">\n   \n\n    <section *ngFor=\"let device of devices\">\n      <div class=\"col-md-4 ngforwala\">\n        <mat-card class=\"example-card d-block\" [ngStyle]=\"{\n          'width': acchaBro()\n        }\">\n          <mat-list-item>\n            <mat-card-header>\n              <div mat-card-avatar class=\"text-center\">\n                <i class=\"fas fa-mobile-alt fa-3x\"></i>\n              </div>\n              <mat-card-title>{{device.device_name}}</mat-card-title>\n              <mat-card-subtitle>{{device.codename}}</mat-card-subtitle>\n            </mat-card-header>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-list-item>\n            <mat-card-content>\n              <i class=\"fas fa-tools ml-2 mt-3\" style=\"font-size:18px\"></i>\n              <span style=\"margin-left: 35px;\">{{device.maintainer_name}}</span>\n            </mat-card-content>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-card-actions>\n            <button mat-button color=\"primary\"><a [href]=\"device.codename\" style=\"text-decoration: none\">Download</a></button>\n            <button mat-button><a [href]=\"device.xda_thread\" style=\"text-decoration: none; color:black\">XDA Thread</a></button>\n          </mat-card-actions>\n        </mat-card>\n      </div>\n    </section>\n\n\n\n  </div>\n</div>"
+module.exports = "<div class=\"container\">\n  <div class=\"row\" style=\"float: none\">\n   \n\n    <section *ngFor=\"let device of devices\">\n      <div class=\"col-md-4 ngforwala\">\n        <mat-card class=\"example-card d-block\" [ngStyle]=\"{\n          'width': acchaBro()\n        }\">\n          <mat-list-item>\n            <mat-card-header>\n              <div mat-card-avatar class=\"text-center\">\n                <i class=\"fas fa-mobile-alt fa-3x\"></i>\n              </div>\n              <mat-card-title>{{device.device_name}}</mat-card-title>\n              <mat-card-subtitle>{{device.codename}}</mat-card-subtitle>\n            </mat-card-header>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-list-item>\n            <mat-card-content>\n              <i class=\"fas fa-tools ml-2 mt-3\" style=\"font-size:18px\"></i>\n              <span style=\"margin-left: 35px;\">{{device.maintainer_name}}</span>\n            </mat-card-content>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-card-actions>\n            <button mat-button color=\"primary\"><a [href]=\"device.url\" style=\"text-decoration: none\">Download</a></button>\n            <button mat-button><a [href]=\"device.xda_thread\" style=\"text-decoration: none; color:black\">XDA Thread</a></button>\n          </mat-card-actions>\n        </mat-card>\n      </div>\n    </section>\n\n\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -612,6 +612,7 @@ var DialogOverviewExampleDialog = /** @class */ (function () {
     DialogOverviewExampleDialog.prototype.ngOnInit = function () {
         var _this = this;
         var boxMessage;
+        var DEVICE_FOUND = false;
         this.findStatus = "Processing...";
         this.processMessage = "Reading device name...";
         this.jsun.getJSON('https://api.github.com/repos/SuperiorOS/official_devices/contents').subscribe(function (data) {
@@ -638,6 +639,7 @@ var DialogOverviewExampleDialog = /** @class */ (function () {
                                     if (navigator.userAgent.includes(mainData[j].assert[k])) {
                                         _this.findStatus = "Found!";
                                         _this.loadinAnim = false;
+                                        DEVICE_FOUND = true;
                                         _this.buildFound = true;
                                         console.log("this", mainData[j]);
                                         boxMessage = "\n                      Name: " + mainData[j].device_name + " <br>\n                      codename: " + mainData[j].codename + " <br>\n                      Build: " + mainData[j].filename + " <br>\n                      Size: " + _this.bytesToSize(mainData[j].size) + " <br>\n                      Maintainer: " + mainData[j].maintainer_name + " <br>\n                      Date: " + mainData[j].date + " <br>\n                      Version: " + mainData[j].version + " <br>\n                      <a href=\"" + mainData[j].xda_thread + "\">XDA Thread</a> <br>\n                    ";
@@ -647,9 +649,11 @@ var DialogOverviewExampleDialog = /** @class */ (function () {
                                         break;
                                     }
                                     else {
-                                        _this.loadinAnim = false;
-                                        _this.processMessage = "Build not found! Try to find your device from downloads section.";
-                                        _this.findStatus = "Failed";
+                                        if (!DEVICE_FOUND) {
+                                            _this.loadinAnim = false;
+                                            _this.processMessage = "Build not found! Try to find your device from downloads section.";
+                                            _this.findStatus = "Failed";
+                                        }
                                     }
                                 }
                             }
