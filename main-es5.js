@@ -41,7 +41,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  device-download works!\n</p>\n"
+module.exports = "<table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n\r\n    <!--- Note that these columns can be defined in any order.\r\n        The actual rendered columns are set as a property on the row definition\" -->\r\n\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"Date\">\r\n        <th mat-header-cell *matHeaderCellDef> Date </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.date}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"Build\" style=\"margin-left: 5px\">\r\n        <th mat-header-cell *matHeaderCellDef> Build </th>\r\n        <td mat-cell *matCellDef=\"let element\" style=\"overflow: hidden\"> {{element.build}} </td>       \r\n    </ng-container>\r\n\r\n    <!-- Weight Column -->\r\n    <ng-container matColumnDef=\"Size\">\r\n        <th mat-header-cell *matHeaderCellDef> Size </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.size}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"Download\" class=\"text-center\">\r\n        <th mat-header-cell *matHeaderCellDef> Download </th>\r\n        <td mat-cell *matCellDef=\"let element\"> \r\n            <a [href]=\"element.download\" style=\"color: inherit; margin-left:7px\">\r\n                    <button mat-icon-button aria-label=\"Download ROM\">\r\n                    <mat-icon>save_alt</mat-icon>\r\n                </button>\r\n            </a>\r\n        </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>"
 
 /***/ }),
 
@@ -63,7 +63,7 @@ module.exports = "<div class=\"container\">\n  <div class=\"row\" style=\"float:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport=\"true\"\n      [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n      [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\n      [opened]=\"!(isHandset$ | async)\">\n    <mat-toolbar>Menu</mat-toolbar>\n    <!-- <mat-nav-list>\n      <a mat-list-item href=\"#\"><mat-icon>home</mat-icon><span style=\"padding-left: 10px\">Home</span></a>\n      <a mat-list-item href=\"#\"><mat-icon>cloud_download</mat-icon> <span style=\"padding-left: 10px\">Downloads</span></a>\n      <a mat-list-item href=\"#\"><mat-icon>info</mat-icon><span style=\"padding-left: 10px\">About</span></a>\n    </mat-nav-list> -->\n    <mat-nav-list>\n      <a routerLink=\"/\" (click)=\"toggal() ? drawer.toggle() : null\" id=\"home\">\n        <mat-list-item class=\"parent\">\n          <span class=\"full-width\">Home</span>\n          <mat-icon mat-list-icon>home</mat-icon>\n        </mat-list-item>\n      </a>\n\n      <a href=\"#\">\n        <mat-list-item class=\"parent\">\n          <span class=\"full-width\">Team</span>\n          <mat-icon mat-list-icon>group</mat-icon>\n        </mat-list-item>\n      </a>\n      \n      <mat-list-item (click)=\"showSubmenu = !showSubmenu\" class=\"parent\">\n        <span class=\"full-width\" *ngIf=\"isExpanded || isShowing\">Downloads</span>\n        <mat-icon mat-list-icon>cloud_download</mat-icon>\n        <mat-icon class=\"menu-button\" [ngClass]=\"{'rotated' : showSubmenu}\" *ngIf=\"isExpanded || isShowing\">expand_more\n        </mat-icon>\n      </mat-list-item>\n      <div class=\"submenu\" [ngClass]=\"{'expanded' : showSubmenu}\" *ngIf=\"isShowing || isExpanded\">\n        <a mat-list-item routerLink=\"/downloads/pie\" (click)=\"toggal() ? drawer.toggle() : null\" id=\"pie\">Pie</a>\n      </div>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color=\"primary\">\n      <button\n        type=\"button\"\n        aria-label=\"Toggle sidenav\"\n        mat-icon-button\n        (click)=\"drawer.toggle()\"\n        *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Superior OS</span>\n    </mat-toolbar>\n    <!-- Add Content Here --> \n    <ng-content></ng-content>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n"
+module.exports = "<mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport=\"true\"\n      [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n      [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\n      [opened]=\"!(isHandset$ | async)\">\n    <mat-toolbar>Menu</mat-toolbar>\n    <!-- <mat-nav-list>\n      <a mat-list-item href=\"#\"><mat-icon>home</mat-icon><span style=\"padding-left: 10px\">Home</span></a>\n      <a mat-list-item href=\"#\"><mat-icon>cloud_download</mat-icon> <span style=\"padding-left: 10px\">Downloads</span></a>\n      <a mat-list-item href=\"#\"><mat-icon>info</mat-icon><span style=\"padding-left: 10px\">About</span></a>\n    </mat-nav-list> -->\n    <mat-nav-list>\n      <a routerLink=\"/\" (click)=\"toggal() ? drawer.toggle() : null\" id=\"home\">\n        <mat-list-item class=\"parent\">\n          <span class=\"full-width\">Home</span>\n          <mat-icon mat-list-icon>home</mat-icon>\n        </mat-list-item>\n      </a>\n\n      <a href=\"#\">\n        <mat-list-item class=\"parent\">\n          <span class=\"full-width\">Team</span>\n          <mat-icon mat-list-icon>group</mat-icon>\n        </mat-list-item>\n      </a>\n      \n      <mat-list-item (click)=\"showSubmenu = !showSubmenu\" class=\"parent\">\n        <span class=\"full-width\" *ngIf=\"isExpanded || isShowing\">Downloads</span>\n        <mat-icon mat-list-icon>cloud_download</mat-icon>\n        <mat-icon class=\"menu-button\" [ngClass]=\"{'rotated' : showSubmenu}\" *ngIf=\"isExpanded || isShowing\">expand_more\n        </mat-icon>\n      </mat-list-item>\n      <div class=\"submenu\" [ngClass]=\"{'expanded' : showSubmenu}\" *ngIf=\"isShowing || isExpanded\">\n        <a mat-list-item routerLink=\"/downloads/pie\" (click)=\"toggal() ? drawer.toggle() : null\" id=\"pie\">Pie</a>\n      </div>\n      <footer class=\"fixed-bottom\">\n        <sup>\n          Made with <i class=\"fa fa-heart\" aria-hidden=\"true\" style=\"color:red\"></i> by <a href=\"http://swapnilsoni.me\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"swapnil\">Swapnil Soni</a>\n        </sup>\n      </footer>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color=\"primary\">\n      <button\n        type=\"button\"\n        aria-label=\"Toggle sidenav\"\n        mat-icon-button\n        (click)=\"drawer.toggle()\"\n        *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Superior OS</span>\n    </mat-toolbar>\n    <!-- Add Content Here --> \n    <ng-content></ng-content>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n"
 
 /***/ }),
 
@@ -255,7 +255,10 @@ var AppModule = /** @class */ (function () {
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_8__["FlexLayoutModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatDialogModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatProgressSpinnerModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatTableModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatPaginatorModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatSortModule"]
             ],
             entryComponents: [_homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["HomepageComponent"], _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["DialogOverviewExampleDialog"], _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_10__["InfoPanelDialog"]],
             providers: [DOMParser],
@@ -276,7 +279,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2RldmljZS1kb3dubG9hZC9kZXZpY2UtZG93bmxvYWQuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "table {\r\n    width: 90%;\r\n    margin: 20px auto;\r\n}\r\ntable > ng-container {\r\n    font-family: sans-serif;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGV2aWNlLWRvd25sb2FkL2RldmljZS1kb3dubG9hZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksVUFBVTtJQUNWLGlCQUFpQjtBQUNyQjtBQUNBO0lBQ0ksdUJBQXVCO0FBQzNCIiwiZmlsZSI6InNyYy9hcHAvZGV2aWNlLWRvd25sb2FkL2RldmljZS1kb3dubG9hZC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGFibGUge1xyXG4gICAgd2lkdGg6IDkwJTtcclxuICAgIG1hcmdpbjogMjBweCBhdXRvO1xyXG59XHJcbnRhYmxlID4gbmctY29udGFpbmVyIHtcclxuICAgIGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -294,18 +297,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _json_parse_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../json-parse.service */ "./src/app/json-parse.service.ts");
-/* harmony import */ var _sourceforge_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../sourceforge.service */ "./src/app/sourceforge.service.ts");
 
 
 
 
-
+var ELEMENT_DATA = [];
 var DeviceDownloadComponent = /** @class */ (function () {
-    function DeviceDownloadComponent(route, jsun, sf) {
+    function DeviceDownloadComponent(route, jsun) {
         this.route = route;
         this.jsun = jsun;
-        this.sf = sf;
+        this.displayedColumns = ['Date', 'Build', 'Size', 'Download'];
+        this.math = Math;
     }
+    DeviceDownloadComponent.prototype.bytesToSize = function (bytes) {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (bytes == 0)
+            return '0 Byte';
+        var i = this.math.floor(this.math.log(bytes) / this.math.log(1024));
+        return this.math.round(bytes / this.math.pow(1024, i)) + ' ' + sizes[i];
+    };
     DeviceDownloadComponent.prototype.getRouteDevice = function (routerUrl) {
         var devicename, FOUND = false;
         for (var i = routerUrl.length; i > 0; i--) {
@@ -331,10 +341,13 @@ var DeviceDownloadComponent = /** @class */ (function () {
                         for (var j = 0; j < mainData.length; j++) {
                             if (mainData[j].codename == _this.getRouteDevice(_this.route.url)) {
                                 //this data needs to be displayed
-                                var sfUrl = 'https://sourceforge.net/projects/superioros/files/' + mainData[j].codename;
-                                _this.sf.getBuilds(sfUrl).subscribe(function (data) {
-                                    console.log(data);
-                                });
+                                _this.currentDevice = mainData[j];
+                                console.log(_this.currentDevice);
+                                ELEMENT_DATA.splice(0, ELEMENT_DATA.length);
+                                // @ts-ignore
+                                ELEMENT_DATA.push({ date: _this.currentDevice.date, build: _this.currentDevice.filename, size: _this.bytesToSize(_this.currentDevice.size), download: _this.currentDevice.url });
+                                console.log(ELEMENT_DATA);
+                                _this.dataSource = ELEMENT_DATA;
                             }
                         }
                     });
@@ -348,7 +361,7 @@ var DeviceDownloadComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./device-download.component.html */ "./node_modules/raw-loader/index.js!./src/app/device-download/device-download.component.html"),
             styles: [__webpack_require__(/*! ./device-download.component.css */ "./src/app/device-download/device-download.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _json_parse_service__WEBPACK_IMPORTED_MODULE_3__["JsonParseService"], _sourceforge_service__WEBPACK_IMPORTED_MODULE_4__["SourceforgeService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _json_parse_service__WEBPACK_IMPORTED_MODULE_3__["JsonParseService"]])
     ], DeviceDownloadComponent);
     return DeviceDownloadComponent;
 }());
@@ -505,7 +518,7 @@ var DownloadpageComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".sidenav-container {\n  height: 100%;\n}\n\n.sidenav {\n  width: 250px;\n}\n\n.sidenav .mat-toolbar {\n  background: inherit;\n}\n\n.mat-toolbar.mat-primary {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  z-index: 1;\n}\n\nul {\n  padding: 0;\n  list-style: none;\n}\n\nli {\n  list-style-type: none;\n}\n\n.example-container {\n  height: 500px;\n  border: 1px solid rgba(0, 0, 0, 0.5);\n}\n\n.example-sidenav-content {\n  display: flex;\n  height: 100%;\n  align-items: center;\n  justify-content: center;\n}\n\n.example-sidenav {\n   -webkit-user-select: none;\n      -moz-user-select: none;\n       -ms-user-select: none;\n           user-select: none;\n}\n\n.full-width {\n  width: 100%;\n  padding-left: 10px;\n}\n\n.menu-button {\n  transition: 300ms ease-in-out;\n  -webkit-transform: rotate(0deg);\n          transform: rotate(0deg);\n}\n\n.menu-button.rotated {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n\n.submenu {\n  display: block;\n  overflow-y: hidden;\n  transition: -webkit-transform 300ms ease;\n  transition: transform 300ms ease;\n  transition: transform 300ms ease, -webkit-transform 300ms ease;\n  -webkit-transform: scaleY(0);\n          transform: scaleY(0);\n  -webkit-transform-origin: top;\n          transform-origin: top;\n  padding-left: 30px;\n}\n\n.submenu.expanded {\n  -webkit-transform: scaleY(1);\n          transform: scaleY(1);\n}\n\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyLW1haW4vaGVhZGVyLW1haW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTtFQUNFLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLHdCQUFnQjtFQUFoQixnQkFBZ0I7RUFDaEIsTUFBTTtFQUNOLFVBQVU7QUFDWjs7QUFDQTtFQUNFLFVBQVU7RUFDVixnQkFBZ0I7QUFDbEI7O0FBQ0E7RUFDRSxxQkFBcUI7QUFDdkI7O0FBSUE7RUFDRSxhQUFhO0VBQ2Isb0NBQW9DO0FBQ3RDOztBQUNBO0VBQ0UsYUFBYTtFQUNiLFlBQVk7RUFDWixtQkFBbUI7RUFDbkIsdUJBQXVCO0FBQ3pCOztBQUNBO0dBQ0cseUJBQWlCO01BQWpCLHNCQUFpQjtPQUFqQixxQkFBaUI7V0FBakIsaUJBQWlCO0FBQ3BCOztBQUNBO0VBQ0UsV0FBVztFQUNYLGtCQUFrQjtBQUNwQjs7QUFDQTtFQUNFLDZCQUE2QjtFQUM3QiwrQkFBdUI7VUFBdkIsdUJBQXVCO0FBQ3pCOztBQUNBO0VBQ0UsaUNBQXlCO1VBQXpCLHlCQUF5QjtBQUMzQjs7QUFDQTtFQUNFLGNBQWM7RUFDZCxrQkFBa0I7RUFDbEIsd0NBQWdDO0VBQWhDLGdDQUFnQztFQUFoQyw4REFBZ0M7RUFDaEMsNEJBQW9CO1VBQXBCLG9CQUFvQjtFQUNwQiw2QkFBcUI7VUFBckIscUJBQXFCO0VBQ3JCLGtCQUFrQjtBQUNwQjs7QUFDQTtFQUNFLDRCQUFvQjtVQUFwQixvQkFBb0I7QUFDdEIiLCJmaWxlIjoic3JjL2FwcC9oZWFkZXItbWFpbi9oZWFkZXItbWFpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnNpZGVuYXYtY29udGFpbmVyIHtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuXG4uc2lkZW5hdiB7XG4gIHdpZHRoOiAyNTBweDtcbn1cblxuLnNpZGVuYXYgLm1hdC10b29sYmFyIHtcbiAgYmFja2dyb3VuZDogaW5oZXJpdDtcbn1cblxuLm1hdC10b29sYmFyLm1hdC1wcmltYXJ5IHtcbiAgcG9zaXRpb246IHN0aWNreTtcbiAgdG9wOiAwO1xuICB6LWluZGV4OiAxO1xufVxudWwge1xuICBwYWRkaW5nOiAwO1xuICBsaXN0LXN0eWxlOiBub25lO1xufVxubGkge1xuICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XG59XG5cblxuXG4uZXhhbXBsZS1jb250YWluZXIge1xuICBoZWlnaHQ6IDUwMHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCByZ2JhKDAsIDAsIDAsIDAuNSk7XG59XG4uZXhhbXBsZS1zaWRlbmF2LWNvbnRlbnQge1xuICBkaXNwbGF5OiBmbGV4O1xuICBoZWlnaHQ6IDEwMCU7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuLmV4YW1wbGUtc2lkZW5hdiB7XG4gICB1c2VyLXNlbGVjdDogbm9uZTtcbn1cbi5mdWxsLXdpZHRoIHtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn1cbi5tZW51LWJ1dHRvbiB7XG4gIHRyYW5zaXRpb246IDMwMG1zIGVhc2UtaW4tb3V0O1xuICB0cmFuc2Zvcm06IHJvdGF0ZSgwZGVnKTtcbn1cbi5tZW51LWJ1dHRvbi5yb3RhdGVkIHtcbiAgdHJhbnNmb3JtOiByb3RhdGUoMTgwZGVnKTtcbn1cbi5zdWJtZW51IHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG92ZXJmbG93LXk6IGhpZGRlbjtcbiAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDMwMG1zIGVhc2U7XG4gIHRyYW5zZm9ybTogc2NhbGVZKDApO1xuICB0cmFuc2Zvcm0tb3JpZ2luOiB0b3A7XG4gIHBhZGRpbmctbGVmdDogMzBweDtcbn1cbi5zdWJtZW51LmV4cGFuZGVkIHtcbiAgdHJhbnNmb3JtOiBzY2FsZVkoMSk7XG59XG5cblxuIl19 */"
+module.exports = ".sidenav-container {\n  height: 100%;\n}\n\n.fixed-bottom {\n  margin-left: 40px;\n}\n\n.container-fluid {\n  padding-right: 0 !important;\n  padding-left: 0 !important;\n}\n\n.swapnil:hover {\n  text-decoration: underline;\n}\n\n.sidenav {\n  width: 250px;\n}\n\n.sidenav .mat-toolbar {\n  background: inherit;\n}\n\n.mat-toolbar.mat-primary {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  z-index: 1;\n}\n\nul {\n  padding: 0;\n  list-style: none;\n}\n\nli {\n  list-style-type: none;\n}\n\n.example-container {\n  height: 500px;\n  border: 1px solid rgba(0, 0, 0, 0.5);\n}\n\n.example-sidenav-content {\n  display: flex;\n  height: 100%;\n  align-items: center;\n  justify-content: center;\n}\n\n.example-sidenav {\n   -webkit-user-select: none;\n      -moz-user-select: none;\n       -ms-user-select: none;\n           user-select: none;\n}\n\n.full-width {\n  width: 100%;\n  padding-left: 10px;\n}\n\n.menu-button {\n  transition: 300ms ease-in-out;\n  -webkit-transform: rotate(0deg);\n          transform: rotate(0deg);\n}\n\n.menu-button.rotated {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n\n.submenu {\n  display: block;\n  overflow-y: hidden;\n  transition: -webkit-transform 300ms ease;\n  transition: transform 300ms ease;\n  transition: transform 300ms ease, -webkit-transform 300ms ease;\n  -webkit-transform: scaleY(0);\n          transform: scaleY(0);\n  -webkit-transform-origin: top;\n          transform-origin: top;\n  padding-left: 30px;\n}\n\n.submenu.expanded {\n  -webkit-transform: scaleY(1);\n          transform: scaleY(1);\n}\n\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyLW1haW4vaGVhZGVyLW1haW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLDJCQUEyQjtFQUMzQiwwQkFBMEI7QUFDNUI7O0FBRUE7RUFDRSwwQkFBMEI7QUFDNUI7O0FBRUE7RUFDRSxZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxtQkFBbUI7QUFDckI7O0FBRUE7RUFDRSx3QkFBZ0I7RUFBaEIsZ0JBQWdCO0VBQ2hCLE1BQU07RUFDTixVQUFVO0FBQ1o7O0FBQ0E7RUFDRSxVQUFVO0VBQ1YsZ0JBQWdCO0FBQ2xCOztBQUNBO0VBQ0UscUJBQXFCO0FBQ3ZCOztBQUlBO0VBQ0UsYUFBYTtFQUNiLG9DQUFvQztBQUN0Qzs7QUFDQTtFQUNFLGFBQWE7RUFDYixZQUFZO0VBQ1osbUJBQW1CO0VBQ25CLHVCQUF1QjtBQUN6Qjs7QUFDQTtHQUNHLHlCQUFpQjtNQUFqQixzQkFBaUI7T0FBakIscUJBQWlCO1dBQWpCLGlCQUFpQjtBQUNwQjs7QUFDQTtFQUNFLFdBQVc7RUFDWCxrQkFBa0I7QUFDcEI7O0FBQ0E7RUFDRSw2QkFBNkI7RUFDN0IsK0JBQXVCO1VBQXZCLHVCQUF1QjtBQUN6Qjs7QUFDQTtFQUNFLGlDQUF5QjtVQUF6Qix5QkFBeUI7QUFDM0I7O0FBQ0E7RUFDRSxjQUFjO0VBQ2Qsa0JBQWtCO0VBQ2xCLHdDQUFnQztFQUFoQyxnQ0FBZ0M7RUFBaEMsOERBQWdDO0VBQ2hDLDRCQUFvQjtVQUFwQixvQkFBb0I7RUFDcEIsNkJBQXFCO1VBQXJCLHFCQUFxQjtFQUNyQixrQkFBa0I7QUFDcEI7O0FBQ0E7RUFDRSw0QkFBb0I7VUFBcEIsb0JBQW9CO0FBQ3RCIiwiZmlsZSI6InNyYy9hcHAvaGVhZGVyLW1haW4vaGVhZGVyLW1haW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zaWRlbmF2LWNvbnRhaW5lciB7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuLmZpeGVkLWJvdHRvbSB7XG4gIG1hcmdpbi1sZWZ0OiA0MHB4O1xufVxuXG4uY29udGFpbmVyLWZsdWlkIHtcbiAgcGFkZGluZy1yaWdodDogMCAhaW1wb3J0YW50O1xuICBwYWRkaW5nLWxlZnQ6IDAgIWltcG9ydGFudDtcbn1cblxuLnN3YXBuaWw6aG92ZXIge1xuICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtcbn1cblxuLnNpZGVuYXYge1xuICB3aWR0aDogMjUwcHg7XG59XG5cbi5zaWRlbmF2IC5tYXQtdG9vbGJhciB7XG4gIGJhY2tncm91bmQ6IGluaGVyaXQ7XG59XG5cbi5tYXQtdG9vbGJhci5tYXQtcHJpbWFyeSB7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIHRvcDogMDtcbiAgei1pbmRleDogMTtcbn1cbnVsIHtcbiAgcGFkZGluZzogMDtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbn1cbmxpIHtcbiAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xufVxuXG5cblxuLmV4YW1wbGUtY29udGFpbmVyIHtcbiAgaGVpZ2h0OiA1MDBweDtcbiAgYm9yZGVyOiAxcHggc29saWQgcmdiYSgwLCAwLCAwLCAwLjUpO1xufVxuLmV4YW1wbGUtc2lkZW5hdi1jb250ZW50IHtcbiAgZGlzcGxheTogZmxleDtcbiAgaGVpZ2h0OiAxMDAlO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cbi5leGFtcGxlLXNpZGVuYXYge1xuICAgdXNlci1zZWxlY3Q6IG5vbmU7XG59XG4uZnVsbC13aWR0aCB7XG4gIHdpZHRoOiAxMDAlO1xuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG59XG4ubWVudS1idXR0b24ge1xuICB0cmFuc2l0aW9uOiAzMDBtcyBlYXNlLWluLW91dDtcbiAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XG59XG4ubWVudS1idXR0b24ucm90YXRlZCB7XG4gIHRyYW5zZm9ybTogcm90YXRlKDE4MGRlZyk7XG59XG4uc3VibWVudSB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBvdmVyZmxvdy15OiBoaWRkZW47XG4gIHRyYW5zaXRpb246IHRyYW5zZm9ybSAzMDBtcyBlYXNlO1xuICB0cmFuc2Zvcm06IHNjYWxlWSgwKTtcbiAgdHJhbnNmb3JtLW9yaWdpbjogdG9wO1xuICBwYWRkaW5nLWxlZnQ6IDMwcHg7XG59XG4uc3VibWVudS5leHBhbmRlZCB7XG4gIHRyYW5zZm9ybTogc2NhbGVZKDEpO1xufVxuXG5cbiJdfQ== */"
 
 /***/ }),
 
@@ -822,65 +835,6 @@ var JsonParseService = /** @class */ (function () {
 }());
 
 //https://api.github.com/repos/SuperiorOS/official_devices/contents
-
-
-/***/ }),
-
-/***/ "./src/app/sourceforge.service.ts":
-/*!****************************************!*\
-  !*** ./src/app/sourceforge.service.ts ***!
-  \****************************************/
-/*! exports provided: SourceforgeService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SourceforgeService", function() { return SourceforgeService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-
-
-
-
-var SourceforgeService = /** @class */ (function () {
-    function SourceforgeService(http, parser) {
-        this.http = http;
-        this.parser = parser;
-    }
-    SourceforgeService.prototype.getBuilds = function (url) {
-        var _this = this;
-        return this.http.get(url, { headers: {
-                'Access-Control-Allow-Origin': '*',
-                "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
-            } }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
-            //assuming only sf.net/p/PROJ/files/FOLNAME is provided only
-            var builds = [];
-            var parsedHtml = _this.parser.parseFromString(data.toString(), 'text/html');
-            var beeld = parsedHtml.querySelectorAll("#files_list > tbody > tr");
-            for (var i = 0; i < beeld.length; i++) {
-                builds.push({
-                    title: beeld[i].title,
-                    date: beeld[i].children[1].innerText,
-                    size: beeld[i].children[2].innerText,
-                    count: beeld[i].children[3].innerText
-                });
-            }
-            console.log(builds);
-            return builds;
-        }));
-    };
-    SourceforgeService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], DOMParser])
-    ], SourceforgeService);
-    return SourceforgeService;
-}());
-
 
 
 /***/ }),
