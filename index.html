@@ -1,17 +1,624 @@
-<!doctype html>
+<!DOCTYPE HTML>
+<!--
+        Project Sakura Website && Resurrection Remix Website
+        Copyright (C) 2014-2019 Shubhang Rathore
+        Copyright (C) 2020 Project Sakura
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or
+        any later version.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+        You should have received a copy of the GNU General Public License
+        along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    -->
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>SuperiorOS</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css" integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" crossorigin="anonymous">  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css" integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="styles.525e96556da505e1e6ac.css"></head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#000000">
+    <title>
+        SuperiorOS
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <!-- Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Google Web fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link href="image/logo.png" rel="shortcut icon">
+    <!-- JQuery -->
+    <script src="js/jquery.js" type="text/javascript">
+
+    </script>
+    <script data-ad-client="ca-pub-1277633863266032" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Load ScrollTo -->
+    <script src="js/jquery.scrollTo.min.js" type="text/javascript">
+    </script>
+    <!-- Load LocalScroll -->
+    <script src="js/jquery.localScroll.min.js" type="text/javascript">
+    </script>
+    <!-- prettyPhoto Initialization -->
+    <!-- Load nprogress -->
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173637831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-173637831-1');
+    </script>
+    <style>
+        body {
+            padding-top: 35px;
+            /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+
+
+        .mask2 img {
+            opacity: 1;
+        }
+
+        @media (max-width: 580px) {
+            body {
+                padding-right: 0px;
+                padding-left: 0px;
+                padding-top: 0px;
+
+            }
+
+            .navbar-inner {
+                min-height: 0em;
+            }
+        }
+    </style>
+</head>
+
 <body>
-  <app-root></app-root>
-<script src="runtime-es2015.e8a2810b3b08d6a1b6aa.js" type="module"></script><script src="runtime-es5.e8a2810b3b08d6a1b6aa.js" nomodule defer></script><script src="polyfills-es5.931f63c2feef40f602a6.js" nomodule defer></script><script src="polyfills-es2015.0ef207fb7b4761464817.js" type="module"></script><script src="main-es2015.38ff332a5f0f25e8ce26.js" type="module"></script><script src="main-es5.38ff332a5f0f25e8ce26.js" nomodule defer></script></body>
+
+    <!-- TODO: Check and fix CSS indenting -->
+    <!--******************** NAVBAR ********************-->
+    <div class="navbar-wrapper">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner" style="padding:25px; padding-bottom: 0px;">
+                <div class="container align_nav">
+                    <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+                    <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+                        <span class="icon-bar">
+                        </span>
+                        <span class="icon-bar">
+                        </span>
+                        <span class="icon-bar">
+                        </span>
+                    </a>
+                    <h1 class="brand">
+                        <a class = "scrolltolink" href="#top">
+                            <b style="font-weight: 400">
+                                SUPERIOR</b>
+                            <b style="font-weight: 1000; color:#00cc00;">OS
+                            </b>
+                        </a>
+                    </h1>
+                    <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+                    <nav class="pull-right nav-collapse collapse">
+                        <ul class="nav" id="menu-main" style="font-weight: 1000">
+                            <li>
+                                <a class = "scrolltolink" href="#screenshots" title="screenshots">
+                                    SCREENSHOTS
+                                </a>
+                            </li>
+                            <li>
+                                <a class = "scrolltolink" href="#features" title="features">
+                                    FEATURES
+                                </a>
+                            </li>
+                            <li>
+                                <a class = "scrolltolink" href="#downloads" title="downloads">
+                                    DOWNLOADS
+                                </a>
+                            </li>
+                            <li>
+                                <a class = "scrolltolink" href="#team" title="team">
+                                    TEAM
+                                </a>
+                            </li>
+                            <li>
+                                <a class = "scrolltolink" href="#credits" title="credits">
+                                    CREDITS
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.navbar-inner -->
+        </div>
+        <!-- /.navbar -->
+    </div>
+    <!-- /.navbar-wrapper -->
+    <div id="top">
+    </div>
+    <!-- ******************** HeaderWrap ********************-->
+    <div id="headerwrap" style="margin-top:50px;">
+        <header class="clearfix">
+            <h1>
+                <img src="image/superior.jpg" />
+            </h1>
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                    </div>
+                </div>
+                <center>
+                    <div class="row">
+                        <div class="span12">
+                            <ul class="icon">
+                                <li>
+                                    <a href="https://t.me/superioros" target="_blank">
+                                        <i class="fa fa-telegram">
+                                        </i>
+                                    </a>
+                                </li>
+                                <li>
+                                <li>
+                                    <a href="https://github.com/SuperiorOS" target="_blank">
+                                        <i class="fa fa-github">
+                                        </i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </header>
+    </div>
+    <!--******************** Feature ********************-->
+    <div class="scrollblock">
+        <section id="feature">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <article>
+                            <p>
+                                Superior OS is a Custom ROM based on AOSP, with some most required minimal features, the main aim of this ROM is to deliver light speed performance,smoothness and good battery backup.
+                            </p>
+                        </article>
+                    </div>
+                    <!-- ./span12 -->
+                </div>
+                <!-- .row -->
+            </div>
+            <!-- ./container -->
+        </section>
+    </div>
+    <!--******************** Screenshots Section ********************-->
+    <section class="single-page scrollblock" id="screenshots">
+        <div class="container">
+            <div class="align">
+                <img alt="download-icon" style="size:10%" src="image/screenshot.png"></img>
+            </div>
+            <h1 id="folio-headline">
+                SCREENSHOTS
+            </h1>
+            <div class="row">
+                <div class="span4">
+                    <div class="mask2">
+                        <img alt="" src="image/mockup/homescreen.png" />
+                    </div>
+                    <div class="inside">
+                        <hgroup>
+                            <h2>
+                                Homescreen
+                            </h2>
+                        </hgroup>
+                    </div>
+                    <!-- /.inside -->
+                </div>
+                <!-- /.span4 -->
+                <div class="span4">
+                    <div class="mask2">
+                        <img alt="" src="image/mockup/statusbar.png" />
+                    </div>
+                    <div class="inside">
+                        <hgroup>
+                            <h2>
+                                QuickSettings
+                            </h2>
+                        </hgroup>
+                    </div>
+                    <!-- /.inside -->
+                </div>
+                <!-- /.span4 -->
+                <div class="span4">
+                    <div class="mask2">
+                        <img alt="" src="image/mockup/lockscreen.png" />
+                    </div>
+                    <div class="inside">
+                        <hgroup>
+                            <h2>
+                                Lockscreen
+                            </h2>
+                        </hgroup>
+                    </div>
+                    <!-- /.inside -->
+                </div>
+                <!-- /.span4 -->
+            </div>
+            <div class="container" style="width:100%">
+                <center>
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- superior-horizontal-unit-2 -->
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1277633863266032"
+                        data-ad-slot="8931146882" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </center>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="span4">
+                    <div class="mask2">
+                        <img alt="" src="image/mockup/settings.png" />
+                    </div>
+                    <div class="inside">
+                        <hgroup>
+                            <h2>
+                                Settings
+                            </h2>
+                        </hgroup>
+                    </div>
+                    <!-- /.inside -->
+                </div>
+                <!-- /.span4 -->
+                <div class="span4">
+                    <div class="mask2">
+                        <img alt="" src="image/mockup/superiorsettings.png" />
+                    </div>
+                    <div class="inside">
+                        <hgroup>
+                            <h2>
+                                Superior Settings
+                            </h2>
+                        </hgroup>
+                    </div>
+                    <!-- /.inside -->
+                </div>
+                <!-- /.span4 -->
+                <div class="span4">
+                    <div class="mask2">
+                        <img alt="" src="image/mockup/aboutphone.png" />
+                    </div>
+                    <div class="inside">
+                        <hgroup>
+                            <h2>
+                                About Phone
+                            </h2>
+                        </hgroup>
+                    </div>
+                    <!-- /.inside -->
+                </div>
+                <!-- /.span4 -->
+            </div>
+        </div>
+        <!-- /.container -->
+    </section>
+    <!--******************** Features Section ********************-->
+    <section class="single-page scrollblock" id="features">
+        <div class="container">
+            <div class="align">
+                <img alt="download-icon" style="size:10%" src="image/feature.png"></img>
+                </i>
+            </div>
+            <h1>
+                FEATURES
+            </h1>
+            <!-- Four columns -->
+            <div class="row">
+                <div class="span3">
+                    <div class="align">
+                        <i class="fa fa-android">
+                        </i>
+                    </div>
+                    <h2>
+                        Customizable
+                    </h2>
+                    <p align="center">
+                        soon.
+                    </p>
+                </div>
+                <!-- /.span3 -->
+                <div class="span3">
+                    <div class="align">
+                        <i class="fa fa-shield">
+                        </i>
+                    </div>
+                    <h2>
+                        Secure
+                    </h2>
+                    <p align="center">
+                        soon.
+                    </p>
+                </div>
+                <!-- /.span3 -->
+                <div class="span3">
+                    <div class="align">
+                        <i class="fa fa-code-fork">
+                        </i>
+                    </div>
+                    <h2>
+                        Open Source
+                    </h2>
+                    <p align="center">
+                        You can contribute to Superior OS. Check our
+                        <a class="features-link" href="https://github.com/SuperiorOS" target="_blank">
+                            Github</a>. Fork us!
+                    </p>
+                </div>
+                <!-- /.span3 -->
+                <div class="span3">
+                    <div class="align">
+                        <i class="fa fa-comments-o">
+                        </i>
+                    </div>
+                    <h2>
+                        Community
+                    </h2>
+                    <p align="center">
+                        Project superior community is growing, come join us on <a class="features-link"
+                            href="https://t.me/superioros" target="_blank"> Telegram.</a>
+                    </p>
+                </div>
+            </div>
+            <!-- /.span3 -->
+        </div>
+        <!-- /.row -->
+        <!-- /.container -->
+    </section>
+    <!--******************** Downloads Section ********************-->
+    <section style="margin-top: -10%" class="single-page scrollblock" id="downloads">
+        <div class="container">
+            <div class="align">
+                <img alt="download-icon" src="image/download.png"></img>
+            </div>
+            <h1>
+                GET SUPERIOR!
+            </h1>
+            <!-- Three columns -->
+            <div class="row">
+                <article class="span4 post">
+                    <center>
+                        <img alt="" src="image/download2.png">
+                    </center>
+                    <div class="inside">
+                        <p class="post-date">
+                        </p>
+                        <center>
+                            <h2>
+                                DOWNLOAD
+                            </h2>
+                            <div class="entry-content">
+                                <p>
+                                    Get Superior OS for your device
+                                </p>
+                                <a class="more-link" href="download.html" target="_blank">
+                                    DOWNLOAD NOW!
+                                </a>
+                            </div>
+                        </center>
+                    </div>
+                    <!-- /.inside -->
+                </article>
+                <article class="span4 post">
+                    <center>
+                        <img alt="" src="image/blog.png">
+                    </center>
+                    <div class="inside">
+                        <p class="post-date">
+                            <i class="icon-calendar">
+                            </i>
+                        </p>
+                        <center>
+                            <h2>
+                                BLOG
+                            </h2>
+                            <div class="entry-content">
+                                <p>
+                                    See what's going on with the development
+                                </p>
+                                <a class="more-link" href="blog.html" target="_blank">
+                                    READ NOW!
+                                </a>
+                            </div>
+                        </center>
+                    </div>
+                    <!-- /.inside -->
+                </article>
+                <!-- /.span4 -->
+                <article class="span4 post">
+                    <center>
+                        <img alt="" src="image/stats.png">
+                    </center>
+                    <div class="inside">
+                        <p class="post-date">
+                        </p>
+                        <center>
+                            <h2>
+                                STATISTICS
+                            </h2>
+                            <div class="entry-content">
+                                <p>
+                                    All the Stats related to Superior OS!
+                                </p>
+                                <a class="more-link" href="stats.html" target="_blank">
+                                    STATS
+                                </a>
+                            </div>
+                        </center>
+                    </div>
+                    <!-- /.inside -->
+                </article>
+            </div>
+        </div>
+        <div class="container" style="width:100%">
+            <center>
+                <!-- /.container -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- horizontal-superior-unit3 -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1277633863266032"
+                    data-ad-slot="5690616310" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </center>
+        </div>
+    </section>
+    <!--******************** Team Section ********************-->
+    <section class="single-page scrollblock " id="team">
+        <div class="container">
+            <div class="align">
+                <img alt="download-icon" src="image/team.png"></img>
+            </div>
+            <h1>
+                Meet the team
+            </h1>
+            <!-- Five columns -->
+            <div class="row">
+                <!-- ./span2 -->
+                <div class="span4">
+                    <div class="align">
+                        <img alt="" class="team-thumb img-circle" src="/image/team/sipun.png">
+                    </div>
+                    <h3>
+                        <b>
+                            Sipun
+                        </b>
+                    </h3>
+                    <div class="job-position">
+                        Founder, Developer
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="align">
+                        <img alt="" class="team-thumb img-circle" src="/image/team/jayant.png">
+                    </div>
+                    <h3>
+                        <b>
+                            Jayant
+                        </b>
+                    </h3>
+                    <div class="job-position">
+                        Lead Developer
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="align">
+                        <img alt="" class="team-thumb img-circle" src="/image/team/arun.jpeg">
+                    </div>
+                    <h3>
+                        <b>
+                            Arun
+                        </b>
+                    </h3>
+                    <div class="job-position">
+                        Website Designer
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </section>
+    <!--******************** Team Section ********************-->
+    <section class="single-page scrollblock" id="team">
+        <div class="container">
+            <h1>
+                Device Maintainers
+            </h1>
+            <div class="row123">
+                <!-- ./span2 -->
+                <div class="row1">
+                    <div class="span2">
+                        <div class="align">
+                            <img alt="" class="team-thumb img-circle" src="/image/maintainers/dark.jpeg">
+                        </div>
+                        <h3>
+                            <b>
+                                Darkstar
+                            </b>
+                        </h3>
+                        <div class="job-position">
+                            Whyred Maintainer
+                        </div>
+                    </div>
+            </div>
+            <!-- /.container -->
+    </section>
+    <!--******************** credits Section ********************-->
+    <section class="single-page scrollblock" id="credits">
+        <div class="container">
+            <div class="align">
+                <img alt="credit-icon" src="image/heart.png"></img>
+            </div>
+            <h1>
+                Credits
+            </h1>
+            <div class="row" style="margin-top: -10%">
+                <div class="span10 offset1">
+                    <hr class="featurette-divider">
+                    <div class="featurette">
+                        <h2>
+                            <p>
+                                Superior Team would like to thank all the users, maintainers and developers who
+                                make Custom ROMs. Without their contributions Superior wouldn't have been possible. We are
+                                grateful to everyone.
+                            </p>
+                        </h2>
+                        <p>
+                            Some icons made by <a href="https://icon54.com/" title="Pixel perfect">Pixel perfect</a>
+                            from <a href="https://www.flaticon.com/" title="Flaticon">flaticon</a>
+                        </p>
+                    </div>
+                </div>
+                <!-- .span10 -->
+            </div>
+        </div>
+        <!-- ./span12 -->
+        <!-- /.row -->
+        <!-- /.container -->
+    </section>
+    <div class="footer-wrapper">
+        <div class="container">
+            <footer><small>
+                ©  2020 Superior OS | Maintained by Superior Team
+                </small>
+            </footer>
+        </div>
+        <!-- ./container -->
+    </div>
+    <!-- Loading the javaScript at the end of the page -->
+    <script src="js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src = "js/navScroll.js" type = "text/javaScript"></script>
+
+</body>
+
 </html>
