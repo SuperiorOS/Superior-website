@@ -330,3 +330,7 @@ td {
     }
 }
 
+::-webkit-scrollbar {
+    width: 25px;
+  }
+   
