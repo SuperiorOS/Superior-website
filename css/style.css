@@ -1192,3 +1192,6 @@ footer p {
 @media only screen and (min-width: 1224px) {
     /* Styles */
 }
+::-webkit-scrollbar {
+    width: 25px;
+  }
