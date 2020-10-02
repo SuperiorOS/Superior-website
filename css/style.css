@@ -467,7 +467,10 @@ section#features .span3 {
 section#features .span3:hover {
     color: #ffffff;
     background: #212121;
-    box-shadow: 1px 1px 6px #000000;
+    box-shadow: 1px 1px 6px #000000;    
+    opacity: 1.94;
+    -webkit-transform: scale(0.92);
+            transform: scale(0.92);
 }
 
 
@@ -531,7 +534,11 @@ article.post {
 }
 
 article.post:hover {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    color: #ffffff;
+    background: #212121;
+    box-shadow: 1px 1px 6px #000000;    opacity: 1.94;
+    -webkit-transform: scale(1.92);
+            transform: scale(0.80);
 }
 
 article .inside {
