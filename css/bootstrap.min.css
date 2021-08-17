@@ -434,8 +434,9 @@ mark {
   content: "\2014 \00A0";
 }
 .img-fluid {
-  max-width: 100%;
+  max-width: 85%;
   height: auto;
+  top: 0;
 }
 .img-thumbnail {
   padding: 0.25rem;
