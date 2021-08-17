@@ -22,9 +22,9 @@
     text-transform: capitalize;
     margin-top: 5px;
   }
-  .intro-img {
+  /* .intro-img {
     padding: 90px 0;
-  }
+  } */
   .contents .head-title {
     font-size: 30px !important;
     line-height: 42px;
@@ -77,9 +77,9 @@
   .hero-area-2 .contents {
     padding-bottom: 0px;
   }
-  .hero-area-2 .intro-img {
+  /* .hero-area-2 .intro-img {
     padding: 20px 0px 0px;
-  }
+  } */
   .intro-img {
     padding: 0;
   }
@@ -140,12 +140,12 @@
   .hero-area-2 .contents {
     padding-bottom: 0px;
   }
-  .hero-area-2 .intro-img {
+  /* .hero-area-2 .intro-img {
     padding: 20px 0px 0px;
-  }
-  .hero-area .intro-img {
+  } */
+  /* .hero-area .intro-img {
     padding: 60px 0 0;
-  }
+  } */
   .navbar {
     padding: 0;
   }
